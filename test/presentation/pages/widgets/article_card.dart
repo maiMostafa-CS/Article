@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:inc_project/features/articles/domain/entities/article.dart';
 import 'package:inc_project/features/articles/presentation/widgets/article_card.dart';
 
