@@ -68,9 +68,17 @@ class _ArticlesViewState extends State<ArticlesView> {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () {
-              context.read<ArticleBloc>().add(const RefreshArticles());
-            },
+          onPressed: () {
+    _refreshCompleter = Completer<void>();
+    context.read<ArticleBloc>().add(const RefreshArticles());
+    if (_refreshCompleter != null) {
+      _refreshCompleter!.future.then((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Articles refreshed')),
+        );
+      });
+    }
+    },
             icon: const Icon(Icons.refresh),
             tooltip: 'Refresh',
           ),
